@@ -10,9 +10,11 @@ namespace OnlineMarket.DAL.Entities
     public class OrderGoods
     {
 
-        public virtual Order Order { get; set; }
+        public int OrderId { get; set; }
+        public int GoodId { get; set; }
+        public  Order Order { get; set; } = null!;
 
-        public virtual Goods Goods { get; set; }
+        public Good Good { get; set; } = null!;
 
     }
 }

@@ -16,8 +16,6 @@ namespace OnlineMarket.DAL.Entities
 
         public DateTimeOffset CompletionDate { get; set; }
 
-
-
-        public virtual Customer Customer { get; set; }
+        public Customer Customer { get; set; }
     }
 }
