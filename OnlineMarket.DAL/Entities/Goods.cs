@@ -9,8 +9,11 @@ namespace OnlineMarket.DAL.Entities
     public sealed  class Goods
     {
         public int ID { get; set; }
+
         public string Name { get; set; }
+
         public bool IsАvailable { get; set; }
+
         public decimal Price { get; set; }
     }
 }

@@ -5,10 +5,9 @@ namespace OnlineMarket.DAL.EF
 {
     public sealed class OnlineMarketContext : DbContext
     {
-
         public OnlineMarketContext()
         {
-          Database.EnsureCreated();
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

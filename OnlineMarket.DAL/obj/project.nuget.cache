@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bpFkKHo7B3bhUeByhIUJgEAhlNkr2YCJAYBJCaHfrkx3SzPRRQOIaeGgZLusgme85SQaFvR0Ao9SC2pZ/SyK/Q==",
+  "dgSpecHash": "/oaP+AwJySMC+aUgLB4sKo5QN0ILaQxnqwAP77hHMppQo0pN1MdXatN23Xv5jlBRbCQX0MGlBoHSLso7ZPCGHQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Asus\\source\\repos\\OnlineMarket\\OnlineMarket.DAL\\OnlineMarket.DAL.csproj",
+  "projectFilePath": "C:\\Users\\Asus\\source\\repos\\Project\\OnlineMarket\\OnlineMarket.DAL\\OnlineMarket.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.10\\microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",
