@@ -7,18 +7,18 @@ namespace OnlineMarket.DAL.Entities
         public int Id { get; set; }
 
         [MaxLength(20)]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
         [MaxLength(20)]
-        public string SecondName { get; set; }
+        public string SecondName { get; set; } = null!;
 
         public byte Age { get; set; }
 
         [MaxLength(30)]
-        public string Email {get; set; }
+        public string Email { get; set; } = null!;
 
         [MaxLength(20)]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null!;
 
         public ICollection<Order> Orders { get; set; }
     }

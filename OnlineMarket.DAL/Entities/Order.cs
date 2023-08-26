@@ -1,11 +1,4 @@
-﻿using OnlineMarket.DAL.Entities;
-using System;
-using System.Collections.Generic;
-
-
-
-
-namespace OnlineMarket.DAL.Entities
+﻿namespace OnlineMarket.DAL.Entities
 {
     public class Order
     {
@@ -15,6 +8,6 @@ namespace OnlineMarket.DAL.Entities
 
         public DateTimeOffset CompletionDate { get; set; }
 
-        public Customer Customer { get; set; }
+        public Customer Customer { get; set; } = null!;
     }
 }
