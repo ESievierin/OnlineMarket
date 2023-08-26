@@ -1,0 +1,12 @@
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\bin\Debug\net6.0\OnlineMarket.DAL.deps.json
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\bin\Debug\net6.0\OnlineMarket.DAL.dll
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\bin\Debug\net6.0\OnlineMarket.DAL.pdb
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.csproj.AssemblyReference.cache
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.AssemblyInfoInputs.cache
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.AssemblyInfo.cs
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.dll
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\refint\OnlineMarket.DAL.dll
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\OnlineMarket.DAL.pdb
+C:\Users\Asus\source\repos\OnlineMarket\OnlineMarket.DAL\obj\Debug\net6.0\ref\OnlineMarket.DAL.dll
