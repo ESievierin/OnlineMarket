@@ -8,8 +8,6 @@
 
         IOrderRepository Orders { get; }
 
-        void Save();
-
-
+        Task Save();
     }
 }

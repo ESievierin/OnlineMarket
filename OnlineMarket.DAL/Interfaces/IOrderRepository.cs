@@ -6,7 +6,7 @@ namespace OnlineMarket.DAL.Interfaces
     {
         Task<Order> Get(int id);
 
-        void Create(Order Order,Good[] goods );
+        void Create(Order Order, Good[] goods);
         
         void Update(Order newOrder);
 

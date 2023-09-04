@@ -17,51 +17,28 @@ namespace OnlineMarket.DAL.Repositories
 
         public ICustomerRepository Customers
         {
-            get
-            {
-
-                if(customerRepository == null)
-                {
-                    customerRepository = new CustomerRepository(db);
-                }
-
-                return customerRepository;
-            }
+            get =>   
+                customerRepository ??= new CustomerRepository(db);
+            
         }
 
         public IOrderRepository Orders
         {
-            get
-            {
-
-                if (orderRepository == null)
-                {
-                    orderRepository = new OrderRepository(db);
-                }
-
-                return orderRepository;
-            }
+            get =>
+                orderRepository ??= new OrderRepository(db);
+            
         }
 
         public IGoodRepository Goods
         {
-            get
-            {
-
-                if (goodRepository == null)
-                {
-                    goodRepository = new GoodRepository(db);
-                }
-
-                return goodRepository;
-            }
+            get =>
+                goodRepository ??= new GoodRepository(db);
+           
         }
 
-        public void Save()
+        public async Task Save()
         {
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
-
-
     }
 }

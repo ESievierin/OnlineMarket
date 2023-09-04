@@ -4,8 +4,7 @@ namespace OnlineMarket.DAL.Interfaces
 {
     public interface IGoodRepository
     {
-
-        IEnumerable<Good> GetAll();
+        Task<Good[]> GetAll();
         
         Task<Good> Get(int id);
 
