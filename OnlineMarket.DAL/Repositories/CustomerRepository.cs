@@ -27,7 +27,9 @@ namespace OnlineMarket.DAL.Repositories
         public async Task Delete(int id)
         {
             var customer = await db.Customers.FindAsync(id);
-            db.Customers.Remove(customer);
+
+            if(customer != null) 
+                db.Customers.Remove(customer);
         }  
     }
 }
