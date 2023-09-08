@@ -4,12 +4,12 @@ namespace OnlineMarket.DAL.Interfaces
 {
     public interface ICustomerRepository
     {
-        Task<Customer> Get(int id);
+        Task<Customer> GetAsync(int id);
 
         void Create(Customer customer);
 
         void Update(Customer newCustomer);
 
-        Task Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
