@@ -1,22 +1,17 @@
 ﻿using OnlineMarket.BLL.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineMarket.BLL.Interfaces
 {
-    public interface IGoodService
+    public interface IGoodService 
     {
-        IEnumerable<GoodDTO> GetAll();
+        Task<GoodDTO[]> GetAllAsync();
 
-        GoodDTO Get(int id);
+        Task<GoodDTO> GetAsync(int id);
 
-        void Create(GoodDTO good);
+        Task CreateAsync(GoodDTO Good);
 
-        void Update(GoodDTO newGood);
+        Task UpdateAsync(GoodDTO newGood);
 
-        Task Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

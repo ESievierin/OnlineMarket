@@ -1,46 +1,48 @@
 ﻿using AutoMapper;
 using OnlineMarket.BLL.DTO;
+using OnlineMarket.BLL.Interfaces;
 using OnlineMarket.DAL.Entities;
 using OnlineMarket.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineMarket.BLL.Services
 {
-    public sealed class GoodService
+    public sealed class GoodService : IGoodService
     {
-        private readonly IWorkUnit Database;
-        private IMapper mapper;
+        private readonly IWorkForUnit Database;
+        private readonly IMapper mapper;
 
-        public GoodService(IWorkUnit database) 
+        public GoodService(IWorkForUnit database) 
         {
             Database = database;
         }
 
-        public GoodDTO[] GetAll() =>
-            mapper.Map<GoodDTO[]>(Database.Goods.GetAll());
+        public async Task<GoodDTO[]> GetAllAsync() =>
+            mapper.Map<GoodDTO[]>(await Database.Goods.GetAllAsync());
 
-        public GoodDTO Get(int id) =>
-            mapper.Map<GoodDTO>(Database.Goods.Get(id));
+        public async Task<GoodDTO> GetAsync(int id) =>
+            mapper.Map<GoodDTO>(await Database.Goods.GetAsync(id));
 
-        public void Update(GoodDTO newGood)
+        public async Task CreateAsync(GoodDTO Good)
         {
-            var data = Database.Goods.Get(newGood.Id);
+            Database.Goods.Create(mapper.Map<Good>(Good));
+            await Database.SaveAsync();
+        }
+
+        public async Task UpdateAsync(GoodDTO newGood)
+        {
+            var data = await Database.Goods.GetAsync(newGood.Id);
 
             if(data != null)
             {
                 Database.Goods.Update(mapper.Map<Good>(newGood));
-                Database.Save();
+                await Database.SaveAsync();
             }
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {      
-            Database.Goods.Delete(id);
-            Database.Save();
+            await Database.Goods.DeleteAsync(id);
+            await Database.SaveAsync();
         }
         
     }

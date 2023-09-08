@@ -1,20 +1,15 @@
 ﻿using OnlineMarket.BLL.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineMarket.BLL.Interfaces
 {
     public interface IOrderService
     {
-        OrderDTO Get(int id);
+        Task<OrderDTO> GetAsync(int id);
 
-        void Create(OrderDTO order, GoodDTO[] goods);
+        Task CreateAsync(OrderDTO order, GoodDTO[] goods);
 
-        void Update(OrderDTO newOrder);
+        Task UpdateAsync(OrderDTO newOrder);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

@@ -1,42 +1,46 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using OnlineMarket.BLL.DTO;
+using OnlineMarket.BLL.Interfaces;
 using OnlineMarket.DAL.Entities;
 using OnlineMarket.DAL.Interfaces;
 
 namespace OnlineMarket.BLL.Services
 {
-    public sealed class CustomerService
+    public sealed class CustomerService : ICustomerService
     {
         private IMapper mapper;
-        private readonly IWorkUnit Database;
+        private readonly IWorkForUnit database;
         
-        public CustomerService(IWorkUnit database)
+        public CustomerService(IWorkForUnit database)
         {
-            Database = database;
+            this.database = database;
         }
 
-        public CustomerDTO Get(int id) =>
-              mapper.Map<CustomerDTO>( Database.Customers.Get(id));
+        public async Task<CustomerDTO> GetAsync(int id) =>
+               mapper.Map<CustomerDTO>(await database.Customers.GetAsync(id));
 
-        public void Create(CustomerDTO customer)
+        public async Task CreateAsync(CustomerDTO customer)
         {
-            Database.Customers.Create(mapper.Map<Customer>(customer));
-            Database.Save();
+            database.Customers.Create(mapper.Map<Customer>(customer));
+            await database.SaveAsync();
         }
 
-        public void Update(CustomerDTO newcustomer)
+        public async Task UpdateAsync(CustomerDTO newCustomer)
         {
-            var data = Database.Customers.Get(newcustomer.Id);
+            var data = await database.Customers.GetAsync(newCustomer.Id);
 
             if(data != null)
             {
-                Database.Customers.Update(mapper.Map<Customer>(newcustomer));
-                Database.Save();
+                database.Customers.Update(mapper.Map<Customer>(newCustomer));
+                await database.SaveAsync();
             }     
         }
 
-        public void Delete(int id) =>      
-            Database.Customers.Delete(id);
+        public async Task DeleteAsync(int id)
+        {
+            await database.Customers.DeleteAsync(id);
+            await database.SaveAsync() ;
+        }     
+            
     }
 }

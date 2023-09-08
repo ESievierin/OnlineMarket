@@ -1,49 +1,44 @@
 ﻿using AutoMapper;
 using OnlineMarket.BLL.DTO;
+using OnlineMarket.BLL.Interfaces;
 using OnlineMarket.DAL.Entities;
 using OnlineMarket.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineMarket.BLL.Services
 {
-    public sealed class OrderService
+    public sealed class OrderService : IOrderService
     {
         private IMapper mapper;
-        private IWorkUnit Database;
+        private readonly IWorkForUnit Database;
 
-        public OrderService(IWorkUnit database)
+        public OrderService(IWorkForUnit database)
         {
             Database = database;
         }
 
-        public OrderDTO Get(int id) =>
-            mapper.Map<OrderDTO>(Database.Orders.Get(id));
+        public async Task<OrderDTO> GetAsync(int id) =>
+            mapper.Map<OrderDTO>(await Database.Orders.GetAsync(id));
 
-        public void Create(OrderDTO orderDTO, GoodDTO[] goods)
+        public async Task CreateAsync(OrderDTO order, GoodDTO[] goods)
         {
-            Database.Orders.Create(mapper.Map<Order>(orderDTO), mapper.Map<Good[]>(goods));
-            Database.Save();
+            Database.Orders.Create(mapper.Map<Order>(order), mapper.Map<Good[]>(goods));
+            await Database.SaveAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            Database.Orders.Delete(id);
-            Database.Save();
+            await Database.Orders.DeleteAsync(id);
+            await Database.SaveAsync();
         }
 
-        public void Update(OrderDTO newOrder)
+        public async Task UpdateAsync(OrderDTO newOrder)
         {
-            var order = Database.Orders.Get(newOrder.Id);
+            var order = await Database.Orders.GetAsync(newOrder.Id);
 
             if(order != null)
             {
                 Database.Orders.Update(mapper.Map<Order>(newOrder));
-                Database.Save();
+                await Database.SaveAsync();
             }
         }   
     }
