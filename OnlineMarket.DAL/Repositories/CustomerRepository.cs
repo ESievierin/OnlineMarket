@@ -14,7 +14,7 @@ namespace OnlineMarket.DAL.Repositories
             this.db = db;
         }
 
-        public async Task<Customer> Get(int id) =>
+        public async Task<Customer> GetAsync(int id) =>
            await db.Customers.FindAsync(id);
 
         public void Update(Customer newCustomer) =>
@@ -24,7 +24,7 @@ namespace OnlineMarket.DAL.Repositories
         public void Create(Customer customer) =>
             db.Customers.Add(customer);
          
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var customer = await db.Customers.FindAsync(id);
 

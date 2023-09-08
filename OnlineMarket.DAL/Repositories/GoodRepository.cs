@@ -15,10 +15,10 @@ namespace OnlineMarket.DAL.Repositories
             this.db = db;
         }
 
-        public async Task<Good[]> GetAll() =>
+        public async Task<Good[]> GetAllAsync() =>
             await db.Goods.ToArrayAsync();
 
-        public async Task<Good> Get(int id) =>
+        public async Task<Good> GetAsync(int id) =>
             await db.Goods.FindAsync(id);
 
         public void Create(Good good)=>
@@ -27,7 +27,7 @@ namespace OnlineMarket.DAL.Repositories
         public void Update(Good newGood) =>
             db.Goods.Update(newGood);
         
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var good = await db.Goods.FindAsync(id);
 

@@ -4,12 +4,12 @@ namespace OnlineMarket.DAL.Interfaces
 {
     public interface IOrderRepository
     {
-        Task<Order> Get(int id);
+        Task<Order> GetAsync(int id);
 
         void Create(Order Order, Good[] goods);
         
         void Update(Order newOrder);
 
-        Task Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

@@ -14,7 +14,7 @@ namespace OnlineMarket.DAL.Repositories
             this.db = db;
         }
 
-        public async Task<Order> Get(int id) =>
+        public async Task<Order> GetAsync(int id) =>
            await db.Orders.FindAsync(id);
 
         public void Create(Order order, Good[] goods)
@@ -25,7 +25,7 @@ namespace OnlineMarket.DAL.Repositories
             db.OrderGoods.AddRange(orderGoods);            
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             var good = await db.Goods.FindAsync(id);
 
