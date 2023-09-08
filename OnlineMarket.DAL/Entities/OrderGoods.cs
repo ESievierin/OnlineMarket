@@ -1,6 +1,6 @@
 ﻿namespace OnlineMarket.DAL.Entities
 {
-    public class OrderGoods
+    public sealed class OrderGoods
     {
         public int OrderId { get; set; }
 
