@@ -1,6 +1,6 @@
 ﻿namespace OnlineMarket.DAL.Interfaces
 {
-    public interface IWorkUnit
+    public interface IWorkForUnit
     {
         ICustomerRepository Customers { get; }
 
@@ -8,8 +8,6 @@
 
         IOrderRepository Orders { get; }
 
-        void Save();
-
-
+        Task SaveAsync();
     }
 }

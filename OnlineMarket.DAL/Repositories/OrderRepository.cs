@@ -14,32 +14,31 @@ namespace OnlineMarket.DAL.Repositories
             this.db = db;
         }
 
-        public async Task<Order> Get(int id) =>
+        public async Task<Order> GetAsync(int id) =>
            await db.Orders.FindAsync(id);
 
         public void Create(Order order, Good[] goods)
         {
             db.Orders.Add(order);
+
             var orderGoods = goods.Select(g => new OrderGoods { GoodId = g.Id, OrderId = order.Id });
             db.OrderGoods.AddRange(orderGoods);            
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            var data = await db.Orders.FindAsync(id);
+            var good = await db.Goods.FindAsync(id);
 
-            if(data != null)
-                db.Orders.Remove(data);
+            if(good != null)
+            {
+                db.Goods.Remove(good);
 
-            var orderGoods = db.OrderGoods.Where(og => og.OrderId == id);
-                
-            db.OrderGoods.RemoveRange(orderGoods);
+                var orderGoods = db.OrderGoods.Where(og => og.OrderId == id);
+                db.OrderGoods.RemoveRange(orderGoods);
+            }      
         }
 
-        public void Update(Order newOrder)
-        {
-            db.Entry(newOrder).State = EntityState.Modified;
-            db.Orders.Update(newOrder);
-        }
+        public void Update(Order newOrder) =>
+            db.Orders.Update(newOrder);     
     }
 }

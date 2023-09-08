@@ -14,23 +14,22 @@ namespace OnlineMarket.DAL.Repositories
             this.db = db;
         }
 
-        public async Task<Customer> Get(int id) =>
+        public async Task<Customer> GetAsync(int id) =>
            await db.Customers.FindAsync(id);
 
-        public void Update(Customer newCustomer) 
-        {
-            db.Entry(newCustomer).State = EntityState.Modified;
+        public void Update(Customer newCustomer) =>
             db.Customers.Update(newCustomer);
-        }
+        
 
         public void Create(Customer customer) =>
             db.Customers.Add(customer);
          
-        public  async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            var data = await db.Customers.FindAsync(id);
-            if(data != null)
-                db.Customers.Remove(data);
+            var customer = await db.Customers.FindAsync(id);
+
+            if(customer != null) 
+                db.Customers.Remove(customer);
         }  
     }
 }

@@ -15,26 +15,24 @@ namespace OnlineMarket.DAL.Repositories
             this.db = db;
         }
 
-        public IEnumerable<Good> GetAll() =>
-            db.Goods;
+        public async Task<Good[]> GetAllAsync() =>
+            await db.Goods.ToArrayAsync();
 
-        public async Task<Good> Get(int id) =>
-           await db.Goods.FindAsync(id);
+        public async Task<Good> GetAsync(int id) =>
+            await db.Goods.FindAsync(id);
 
         public void Create(Good good)=>
-            db.Goods.AddAsync(good);
+            db.Goods.Add(good);
 
-        public void Update( Good newGood)
-        {
-            db.Entry(newGood).State = EntityState.Modified;
+        public void Update(Good newGood) =>
             db.Goods.Update(newGood);
-        }
-
-        public async Task Delete(int id)
+        
+        public async Task DeleteAsync(int id)
         {
-            var data = await  db.Goods.FindAsync(id);
-            if (data != null)
-                db.Goods.Remove(data);         
-        }
+            var good = await db.Goods.FindAsync(id);
+
+            if(good != null)
+                db.Goods.Remove(good);
+        }    
     }
 }
