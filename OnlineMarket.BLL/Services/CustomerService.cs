@@ -27,19 +27,14 @@ namespace OnlineMarket.BLL.Services
 
         public async Task UpdateAsync(CustomerDTO newCustomer)
         {
-            var data = await database.Customers.GetAsync(newCustomer.Id);
-
-            if(data != null)
-            {
-                database.Customers.Update(mapper.Map<Customer>(newCustomer));
-                await database.SaveAsync();
-            }     
+            database.Customers.Update(mapper.Map<Customer>(newCustomer));
+            await database.SaveAsync();               
         }
 
         public async Task DeleteAsync(int id)
         {
             await database.Customers.DeleteAsync(id);
-            await database.SaveAsync() ;
+            await database.SaveAsync();
         }     
             
     }

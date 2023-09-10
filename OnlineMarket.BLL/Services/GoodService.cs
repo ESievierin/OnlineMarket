@@ -8,41 +8,36 @@ namespace OnlineMarket.BLL.Services
 {
     public sealed class GoodService : IGoodService
     {
-        private readonly IWorkForUnit Database;
+        private readonly IWorkForUnit database;
         private readonly IMapper mapper;
 
         public GoodService(IWorkForUnit database) 
         {
-            Database = database;
+            this.database = database;
         }
 
         public async Task<GoodDTO[]> GetAllAsync() =>
-            mapper.Map<GoodDTO[]>(await Database.Goods.GetAllAsync());
+            mapper.Map<GoodDTO[]>(await database.Goods.GetAllAsync());
 
         public async Task<GoodDTO> GetAsync(int id) =>
-            mapper.Map<GoodDTO>(await Database.Goods.GetAsync(id));
+            mapper.Map<GoodDTO>(await database.Goods.GetAsync(id));
 
         public async Task CreateAsync(GoodDTO Good)
         {
-            Database.Goods.Create(mapper.Map<Good>(Good));
-            await Database.SaveAsync();
+            database.Goods.Create(mapper.Map<Good>(Good));
+            await database.SaveAsync();
         }
 
         public async Task UpdateAsync(GoodDTO newGood)
         {
-            var data = await Database.Goods.GetAsync(newGood.Id);
-
-            if(data != null)
-            {
-                Database.Goods.Update(mapper.Map<Good>(newGood));
-                await Database.SaveAsync();
-            }
+            database.Goods.Update(mapper.Map<Good>(newGood));
+            await database.SaveAsync();
         }
 
         public async Task DeleteAsync(int id)
         {      
-            await Database.Goods.DeleteAsync(id);
-            await Database.SaveAsync();
+            await database.Goods.DeleteAsync(id);
+            await database.SaveAsync();
         }
         
     }
