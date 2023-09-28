@@ -11,9 +11,16 @@ namespace OnlineMarket.BLL.Services
         private IMapper mapper;
         private readonly IWorkForUnit database;
         
+<<<<<<< Updated upstream
         public CustomerService(IWorkForUnit database)
         {
             this.database = database;
+=======
+        public CustomerService(IWorkForUnit database, IMapper mapper)
+        {
+            this.database = database;
+            this.mapper = mapper;
+>>>>>>> Stashed changes
         }
 
         public async Task<CustomerDTO> GetAsync(int id) =>

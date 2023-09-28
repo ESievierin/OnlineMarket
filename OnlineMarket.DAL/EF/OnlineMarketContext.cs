@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using OnlineMarket.DAL.Entities;
 
 namespace OnlineMarket.DAL.EF
@@ -17,7 +18,12 @@ namespace OnlineMarket.DAL.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=OnlineMarketDB;Username=postgres;Password=VRTS17axD");
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("appsettings.local.json")
+            .Build();
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
         }
         
         public DbSet<Customer> Customers { get; set; }

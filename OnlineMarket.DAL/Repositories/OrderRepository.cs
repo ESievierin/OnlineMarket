@@ -2,6 +2,7 @@
 using OnlineMarket.DAL.Entities;
 using OnlineMarket.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Runtime.CompilerServices;
 
 namespace OnlineMarket.DAL.Repositories
 {
@@ -17,21 +18,22 @@ namespace OnlineMarket.DAL.Repositories
         public async Task<Order> GetAsync(int id) =>
            await db.Orders.FindAsync(id);
 
-        public void Create(Order order, Good[] goods)
+        public async Task CreateAsync(Order order, int[] goodsid)
         {
-            db.Orders.Add(order);
+            var createdOrder = db.Orders.Add(order);
+            await db.SaveChangesAsync();
 
-            var orderGoods = goods.Select(g => new OrderGoods { GoodId = g.Id, OrderId = order.Id });
+            var orderGoods = goodsid.Select(g => new OrderGoods { GoodId = g, OrderId = createdOrder.Entity.Id});
             db.OrderGoods.AddRange(orderGoods);            
         }
 
         public async Task DeleteAsync(int id)
         {
-            var good = await db.Goods.FindAsync(id);
+            var order = await db.Orders.FindAsync(id);
 
-            if(good != null)
+            if(order != null)
             {
-                db.Goods.Remove(good);
+                db.Orders.Remove(order);
 
                 var orderGoods = db.OrderGoods.Where(og => og.OrderId == id);
                 db.OrderGoods.RemoveRange(orderGoods);
