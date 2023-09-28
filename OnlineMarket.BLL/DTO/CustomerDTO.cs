@@ -6,11 +6,8 @@
 
         public string FirstName { get; set; } = null!;
 
-<<<<<<< Updated upstream
-        public string LastName { get; set; } = null!;
-=======
         public string SecondName { get; set; } = null!;
->>>>>>> Stashed changes
+
 
         public byte Age { get; set; }
 

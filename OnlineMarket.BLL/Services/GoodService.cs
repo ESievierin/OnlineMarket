@@ -11,16 +11,15 @@ namespace OnlineMarket.BLL.Services
         private readonly IWorkForUnit database;
         private readonly IMapper mapper;
 
-<<<<<<< Updated upstream
-        public GoodService(IWorkForUnit database) 
+
+        public GoodService(IWorkForUnit database)
         {
             this.database = database;
-=======
+        }
         public GoodService(IWorkForUnit database, IMapper mapper ) 
         {
             this.database = database;
             this.mapper = mapper;
->>>>>>> Stashed changes
         }
 
         public async Task<GoodDTO[]> GetAllAsync() =>
