@@ -6,7 +6,7 @@
 
         public int CustomerId { get; set; }
 
-        public int[] GoodsId { get; set; }
+        public int[] GoodsIds { get; set; }
 
         public DateTimeOffset OrderDate { get; set; }
 

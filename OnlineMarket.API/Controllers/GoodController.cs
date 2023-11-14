@@ -27,11 +27,11 @@ namespace OnlineMarket.API.Controllers
         public async Task<GoodDTO> GetAsync(int id) =>
             await goodService.GetAsync(id);
 
-        [HttpPost("create")]
+        [HttpPost]
         public async Task CreateAsync([FromBody] GoodRequest request) =>
             await goodService.CreateAsync(mapper.Map<GoodDTO>(request));
 
-        [HttpPut("Update")]
+        [HttpPut]
         public async Task UpdateAsync([FromBody] GoodRequest request) =>
             await goodService.UpdateAsync(mapper.Map<GoodDTO>(request));
 

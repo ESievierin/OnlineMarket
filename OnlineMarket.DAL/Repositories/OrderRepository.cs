@@ -18,12 +18,12 @@ namespace OnlineMarket.DAL.Repositories
         public async Task<Order> GetAsync(int id) =>
            await db.Orders.FindAsync(id);
 
-        public async Task CreateAsync(Order order, int[] goodsid)
+        public async Task CreateAsync(Order order, int[] goodsids)
         {
             var createdOrder = db.Orders.Add(order);
             await db.SaveChangesAsync();
 
-            var orderGoods = goodsid.Select(g => new OrderGoods { GoodId = g, OrderId = createdOrder.Entity.Id});
+            var orderGoods = goodsids.Select(g => new OrderGoods { GoodId = g, OrderId = createdOrder.Entity.Id});
             db.OrderGoods.AddRange(orderGoods);            
         }
 

@@ -6,7 +6,7 @@ namespace OnlineMarket.BLL.Interfaces
     {
         Task<OrderDTO> GetAsync(int id);
 
-        Task CreateAsync(OrderDTO order, int[] goodsid);
+        Task CreateAsync(OrderDTO order, int[] goodsids);
 
 
         Task UpdateAsync(OrderDTO newOrder);

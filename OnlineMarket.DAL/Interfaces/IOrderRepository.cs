@@ -6,7 +6,7 @@ namespace OnlineMarket.DAL.Interfaces
     {
         Task<Order> GetAsync(int id);
 
-        Task CreateAsync(Order Order, int[] goodsid);
+        Task CreateAsync(Order Order, int[] goodsids);
         
         void Update(Order newOrder);
 

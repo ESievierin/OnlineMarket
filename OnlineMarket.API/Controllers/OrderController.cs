@@ -23,9 +23,9 @@ namespace OnlineMarket.API.Controllers
         public async Task<OrderDTO> GetAsync(int id) =>
             await orderService.GetAsync(id);
 
-        [HttpPost("create")]
+        [HttpPost]
         public async Task CreateAsync([FromBody] OrderRequest request) =>
-            await orderService.CreateAsync(mapper.Map<OrderDTO>(request), request.GoodsId);
+            await orderService.CreateAsync(mapper.Map<OrderDTO>(request), request.GoodsIds);
 
         [HttpDelete("{id}")]
         public async Task DeleteAsync(int id) =>

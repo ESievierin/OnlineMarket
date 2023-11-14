@@ -24,9 +24,9 @@ namespace OnlineMarket.BLL.Services
             mapper.Map<OrderDTO>(await database.Orders.GetAsync(id));
 
 
-        public async Task CreateAsync(OrderDTO order, int[] goodsid)
+        public async Task CreateAsync(OrderDTO order, int[] goodsids)
         {
-            await database.Orders.CreateAsync(mapper.Map<Order>(order),goodsid);
+            await database.Orders.CreateAsync(mapper.Map<Order>(order),goodsids);
             await database.SaveAsync();
         }
 

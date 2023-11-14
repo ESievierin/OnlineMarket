@@ -6,7 +6,7 @@
 
         public string Name { get; set; } = null!;
 
-        public bool IsAvalaible { get; set; }
+        public bool IsАvailable { get; set; }
 
         public decimal Price { get; set; }
     }

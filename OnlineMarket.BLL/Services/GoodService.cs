@@ -18,8 +18,8 @@ namespace OnlineMarket.BLL.Services
         }
         public GoodService(IWorkForUnit database, IMapper mapper ) 
         {
-            this.database = database;
             this.mapper = mapper;
+            this.database = database;
         }
 
         public async Task<GoodDTO[]> GetAllAsync() =>

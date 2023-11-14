@@ -14,9 +14,9 @@ namespace OnlineMarket.API.Controllers
         private readonly ICustomerService customerService;
         private readonly IMapper mapper;
 
-        public CustomerController(ICustomerService customerservice, IMapper mapper)
+        public CustomerController(ICustomerService customerService, IMapper mapper)
         {
-            customerService = customerservice;
+            this.customerService = customerService;
             this.mapper = mapper;
         }
 
@@ -24,11 +24,11 @@ namespace OnlineMarket.API.Controllers
         public async Task<CustomerDTO> GetAsync(int id) =>
             await customerService.GetAsync(id);
 
-        [HttpPost("create")]
+        [HttpPost]
         public async Task CreateAsync([FromBody] CustomerRequest request) =>
             await customerService.CreateAsync(mapper.Map<CustomerDTO>(request));
 
-        [HttpPut("update")]
+        [HttpPut]
         public async Task UpdateAsync([FromBody] CustomerRequest request) =>
             await customerService.UpdateAsync(mapper.Map<CustomerDTO>(request));
 
