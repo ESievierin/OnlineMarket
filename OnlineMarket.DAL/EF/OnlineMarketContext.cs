@@ -6,6 +6,7 @@ namespace OnlineMarket.DAL.EF
 {
     public sealed class OnlineMarketContext : DbContext
     {
+
         public OnlineMarketContext()
         {
             Database.EnsureCreated();
@@ -26,12 +27,12 @@ namespace OnlineMarket.DAL.EF
             optionsBuilder.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
         }
         
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; } = null!;
 
-        public DbSet<Good> Goods { get; set; }
+        public DbSet<Good> Goods { get; set; } = null!;
 
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; } = null!;
 
-        public DbSet<OrderGoods> OrderGoods { get; set; }
+        public DbSet<OrderGoods> OrderGoods { get; set; } = null!;
     }
 }

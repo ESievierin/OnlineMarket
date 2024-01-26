@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OnlineMarket.DAL.EF;
@@ -11,9 +12,10 @@ using OnlineMarket.DAL.EF;
 namespace OnlineMarket.DAL.Migrations
 {
     [DbContext(typeof(OnlineMarketContext))]
-    partial class OnlineMarketContextModelSnapshot : ModelSnapshot
+    [Migration("20240126120303_fix-isAvailable-Name-Migration")]
+    partial class fixisAvailableNameMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

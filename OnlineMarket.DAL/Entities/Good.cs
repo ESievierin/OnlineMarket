@@ -9,7 +9,7 @@ namespace OnlineMarket.DAL.Entities
         [MaxLength(20)]
         public string Name { get; set; } = null!;
 
-        public bool IsАvailable { get; set; }
+        public bool IsAvailable { get; set; }
 
         public decimal Price { get; set; }      
     }
